@@ -1,27 +1,22 @@
 <template lang="html">
   <v-flex>
-    <v-layout row wrap ml-3 mr-3 mt-5>
+    <v-layout row wrap ml-3 mr-3 mt-5 justify-center>
       <v-flex xs12 sm5 md3 md v-for="repo in filtertrepos" :key="repo.id">
         <v-card class="mt-3 mx-2" outlined>
             <v-list-item>
               <v-list-item-content>
-                <v-row class="ma-0 fill-height">
-                  <v-col>
-                    <v-list-item-title class="headline mb-1">{{repo.name}}</v-list-item-title>
-                  </v-col>
-                  <v-spacer></v-spacer>
-                  <v-col>
-                    <v-btn icon color="blue" v-clipboard="repo.ssh_url">
-                      <v-icon>mdi-content-copy</v-icon>
-                    </v-btn>
+                <v-subheader class="justify-center blue--text">{{repo.language}}</v-subheader>
+                <v-card-title class="justify-center">{{repo.name}}</v-card-title>
+                <v-row class="justify-center">
                     <v-btn icon color="blue" :href="repo.html_url">
                       <v-icon>mdi-github</v-icon>
                     </v-btn>
-                  </v-col>
+                    <v-btn icon color="blue" v-clipboard="repo.ssh_url">
+                      <v-icon>mdi-git</v-icon>
+                    </v-btn>
                 </v-row>
                 <v-list-item-subtitle>
-                  <b class="blue--text">{{repo.language}}</b><br>
-                  <b>DESCRIPTION: {{repo.description}}</b><br>
+                  <b v-if="repo.description" class="text-wrap">DESCRIPTION: <br>{{repo.description}}</b><br><br>
                   <b>UPDATE: {{repo.updated_at | date}}</b><br>
                 </v-list-item-subtitle>
               </v-list-item-content>
