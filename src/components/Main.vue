@@ -37,8 +37,8 @@
       return {
         user: [],
         icons: [
-          { icon: 'mdi-spotify', color: 'green', link: 'https://www.instagram.com/robins1710'},
-          { icon: 'mdi-gog', color: 'purple', link: 'https://www.instagram.com/robins1710'},
+          { icon: 'mdi-spotify', color: 'green', link: 'https://open.spotify.com/user/crisu1710'},
+          { icon: 'mdi-gog', color: 'purple', link: 'https://www.gog.com/u/Crisu1710'},
           { icon: 'mdi-steam', color: 'indigo darken-4', link: 'https://www.instagram.com/robins1710'},
           { icon: 'mdi-github', color: '', link: 'https://github.com/Crisu1710'},
           { icon: 'mdi-twitter', color: 'blue', link: 'https://twitter.com/Crisu1710'},
