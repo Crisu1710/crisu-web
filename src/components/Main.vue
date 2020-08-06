@@ -15,11 +15,11 @@
 
       <v-col class="mb-4">
         <h1 class="display-2 font-weight-bold mb-3">
-          {{user.name}} - @{{user.login}}
+          {{user.name}} @{{user.login}}
         </h1>
         <h1 class="display-2 font-weight-bold mb-3">
           <v-btn v-for="icon in icons" :key="icon" class="mx-4" dark icon target="_blank" :href="icon.link">
-            <v-icon size="24px">{{ icon.icon }}</v-icon>
+            <v-icon size="24px" :color="icon.color">{{ icon.icon }}</v-icon>
           </v-btn>
         </h1>
 
@@ -37,12 +37,13 @@
       return {
         user: [],
         icons: [
-          { icon: 'mdi-gog', link: 'https://www.instagram.com/robins1710'},
-          { icon: 'mdi-steam', link: 'https://www.instagram.com/robins1710'},
-          { icon: 'mdi-github', link: 'https://github.com/Crisu1710'},
-          { icon: 'mdi-twitter', link: 'https://twitter.com/Crisu1710'},
-          { icon: 'mdi-xing', link: 'https://www.xing.com/profile/Robin_Schneider99/cv'},
-          { icon: 'mdi-instagram', link: 'https://www.instagram.com/robins1710'},
+          { icon: 'mdi-spotify', color: 'green', link: 'https://www.instagram.com/robins1710'},
+          { icon: 'mdi-gog', color: 'purple', link: 'https://www.instagram.com/robins1710'},
+          { icon: 'mdi-steam', color: 'indigo darken-4', link: 'https://www.instagram.com/robins1710'},
+          { icon: 'mdi-github', color: '', link: 'https://github.com/Crisu1710'},
+          { icon: 'mdi-twitter', color: 'blue', link: 'https://twitter.com/Crisu1710'},
+          { icon: 'mdi-xing', color: 'teal darken-3', link: 'https://www.xing.com/profile/Robin_Schneider99/cv'},
+          { icon: 'mdi-instagram', color: 'pink', link: 'https://www.instagram.com/robins1710'},
         ],
       }
     },

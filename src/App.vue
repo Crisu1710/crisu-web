@@ -48,15 +48,9 @@ export default {
       sideNav: false,
       version: "1.0.3",
       imprint: "/imprint",
-      icons: [
-        { icon: 'mdi-steam', link: 'https://www.instagram.com/robins1710'},
-        { icon: 'mdi-github', link: 'https://github.com/Crisu1710'},
-        { icon: 'mdi-twitter', link: 'https://twitter.com/Crisu1710'},
-        { icon: 'mdi-xing', link: 'https://www.xing.com/profile/Robin_Schneider99/cv'},
-        { icon: 'mdi-instagram', link: 'https://www.instagram.com/robins1710'},
-      ],
       menuItems: [
         { icon: 'mdi-github', title: 'GIT REPOS', link: '/github'},
+        { icon: 'mdi-music', title: 'MEDIA', link: '/media'},
         { icon: 'mdi-home', title: 'HOME', link: '/'},
       ]
     }

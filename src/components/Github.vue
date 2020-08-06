@@ -1,6 +1,6 @@
 <template lang="html">
   <v-flex>
-    <v-layout row wrap ml-3 mr-3 mt-5 justify-center>
+    <v-layout row wrap ml-3 mr-3 mt-5 mb-2 justify-center>
       <v-flex xs12 sm5 md3 md v-for="repo in filtertrepos" :key="repo.id">
         <v-card class="mt-3 mx-2" outlined>
             <v-list-item>
@@ -16,7 +16,7 @@
                     </v-btn>
                 </v-row>
                 <v-list-item-subtitle>
-                  <b v-if="repo.description" class="text-wrap">DESCRIPTION: <br>{{repo.description}}</b><br><br>
+                  <b v-if="repo.description" class="text-wrap">{{repo.description}}</b><br><br>
                   <b>UPDATE: {{repo.updated_at | date}}</b><br>
                 </v-list-item-subtitle>
               </v-list-item-content>
