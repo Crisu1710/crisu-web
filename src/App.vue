@@ -1,60 +1,68 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
+    <v-app-bar class="white--text indigo darken-3" app >
+      <v-app-bar-nav-icon color="white--text" @click.stop="sideNav = !sideNav"></v-app-bar-nav-icon>
+        <v-toolbar-title>
+          <router-link to="/" tag="span" style="cursor: pointer; text-decoration: none">CRISU-WEB</router-link>
+        </v-toolbar-title>
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+        <v-toolbar-items class="hidden-xs-only" >
+          <v-btn color="indigo darken-3" v-for="item in menuItems" :key="item.title" :to="item.link" >
+            <v-icon left>{{ item.icon }}</v-icon>
+            {{ item.title }}
+          </v-btn>
+        </v-toolbar-items>
     </v-app-bar>
 
-    <v-main>
-      <HelloWorld/>
-    </v-main>
+    <v-navigation-drawer persistent v-model="sideNav" class="vwdblue text-uppercase" color="indigo darken-2" app>  <!-- navigation bar -->
+      <v-list color="indigo darken-2">  <!-- text color -->
+        <v-list-item v-for="item in menuItems" :key="item.title" :to="item.link" >
+          <v-list-item-action>
+          <v-icon class="white--text">{{ item.icon }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content class="white--text">
+              {{ item.title }}
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-content>
+      <router-view></router-view>
+    </v-content>
+    <v-footer dark padless>
+    <v-card class="flex" flat tile>
+      <v-card-title class="teal">
+        <strong class="subheading"></strong>
+        <v-spacer></v-spacer>
+        <v-btn v-for="icon in icons" :key="icon" class="mx-4" dark icon target="_blank" :href="icon.link">
+          <v-icon size="24px">{{ icon.icon }}</v-icon>
+        </v-btn>
+      </v-card-title>
+      <v-card-text class="py-2 white--text text-center">
+        {{ new Date().getFullYear() }} — <strong>Robin @Crisu1710</strong>
+      </v-card-text>
+    </v-card>
+  </v-footer>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
 export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
+  data () {
+    return {
+      sideNav: false,
+      version: "1.0.3",
+      icons: [
+        { icon: 'mdi-steam', link: 'https://www.instagram.com/robins1710'},
+        { icon: 'mdi-github', link: 'https://github.com/Crisu1710'},
+        { icon: 'mdi-twitter', link: 'https://twitter.com/Crisu1710'},
+        { icon: 'mdi-xing', link: 'https://www.xing.com/profile/Robin_Schneider99/cv'},
+        { icon: 'mdi-instagram', link: 'https://www.instagram.com/robins1710'},
+      ],
+      menuItems: [
+        { icon: 'mdi-github', title: 'GIT REPOS', link: '/github'},
+      ]
+    }
   },
-
-  data: () => ({
-    //
-  }),
 };
 </script>
