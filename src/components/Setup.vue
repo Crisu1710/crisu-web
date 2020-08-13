@@ -1,8 +1,8 @@
 <template lang="html">
   <v-flex>
     <h1 class="text-center text-uppercase mt-5">my devices</h1>
-    <v-layout row wrap ml-3 mr-3 mt-5 mb-5 justify-center>
-      <v-flex xs12 sm9 md6 lg4 xl3 v-for="device in devices" :key="device.name">
+    <v-layout row wrap ml-2 mr-2 mt-2 mb-5 justify-center>
+      <v-flex xs12 sm9 md6 lg4 xl3 v-for="device in devices" :key="device.name" class="mb-4">
         <v-card class="mt-3 mx-2" outlined height="100%">
             <v-list-item>
               <v-list-item-content>
