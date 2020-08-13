@@ -1,5 +1,5 @@
 <template lang="html">
-  <h1>test</h1>
+  <p>this is a private website so no imprint is needed <br> Robin Schneider <br> m2rs@posteo.de </p>
 </template>
 
 <script>

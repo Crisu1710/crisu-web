@@ -1,24 +1,28 @@
 <template lang="html">
   <v-flex>
-    <v-layout row wrap ml-3 mr-3 mt-5 mb-2 justify-center>
-      <v-flex xs12 sm5 md3 md v-for="repo in filtertrepos" :key="repo.id">
-        <v-card class="mt-3 mx-2" outlined>
+    <h1 class="text-center text-uppercase mt-5">my github repositories</h1>
+    <v-layout row wrap ml-3 mr-3 mt-1 mb-5 justify-center>
+      <v-flex xs12 sm9 md6 lg4 xl3 v-for="repo in filtertrepos" :key="repo.id">
+        <v-card class="mt-3 mx-2" outlined height="100%">
             <v-list-item>
               <v-list-item-content>
                 <v-subheader class="justify-center blue--text">{{repo.language}}</v-subheader>
                 <v-card-title class="justify-center">{{repo.name}}</v-card-title>
                 <v-row class="justify-center">
-                    <v-btn icon color="blue" :href="repo.html_url">
-                      <v-icon>mdi-github</v-icon>
+                    <v-btn class="mr-2" color="blue" rounded outlined :href="repo.html_url">
+                      <v-icon>mdi-github</v-icon> Open
                     </v-btn>
-                    <v-btn icon color="blue" v-clipboard="repo.ssh_url">
-                      <v-icon>mdi-git</v-icon>
+                    <v-btn class="mr-2" rounded outlined color="blue" v-clipboard="repo.ssh_url">
+                      <v-icon>mdi-git</v-icon>clone
+                    </v-btn>
+                    <v-btn rounded outlined color="blue">
+                      <v-icon>mdi-star-outline</v-icon>{{repo.stargazers_count}}
                     </v-btn>
                 </v-row>
-                <v-list-item-subtitle>
-                  <b v-if="repo.description" class="text-wrap">{{repo.description}}</b><br><br>
-                  <b>UPDATE: {{repo.updated_at | date}}</b><br>
-                </v-list-item-subtitle>
+                <v-card-text class="mt-3" >
+                  <h4 v-if="repo.description" class="text-wrap">{{repo.description}}</h4><br>
+                  <h5>UPDATE: {{repo.updated_at | date}}</h5><br>
+                </v-card-text>
               </v-list-item-content>
             </v-list-item>
         </v-card>

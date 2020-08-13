@@ -3,7 +3,7 @@
     <v-app-bar class="white--text blue" app >
       <v-app-bar-nav-icon color="white--text" @click.stop="sideNav = !sideNav"></v-app-bar-nav-icon>
         <v-toolbar-title>
-          <router-link to="/" tag="span" style="cursor: pointer; text-decoration: none">CRISU-WEB</router-link>
+          <router-link to="/" tag="span" style="cursor: pointer; text-decoration: none">Home</router-link>
         </v-toolbar-title>
       <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-xs-only" >
@@ -49,6 +49,7 @@ export default {
       version: "1.0.3",
       imprint: "/imprint",
       menuItems: [
+        { icon: 'mdi-desktop-classic', title: 'MY SETUP', link: '/setup'},
         { icon: 'mdi-github', title: 'GIT REPOS', link: '/github'},
         { icon: 'mdi-music', title: 'MEDIA', link: '/media'},
         { icon: 'mdi-home', title: 'HOME', link: '/'},

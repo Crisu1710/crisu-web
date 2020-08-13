@@ -4,6 +4,7 @@ import Main from '@/components/Main'
 import Github from '@/components/Github'
 import Imprint from '@/components/Imprint'
 import Media from '@/components/Media'
+import Setup from '@/components/Setup'
 //import NotFound from '@/components/NotFound'
 
 Vue.use(Router)
@@ -29,6 +30,11 @@ export default new Router({
       path: '/media',
       name: 'Media',
       component: Media,
+    },
+    {
+      path: '/setup',
+      name: 'Setup',
+      component: Setup,
     }
   ],
   mode: 'history'

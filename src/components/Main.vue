@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row class="text-center">
+    <v-row class="text-center mt-5">
       <v-col cols="12">
 
         <v-avatar size="200">
@@ -14,7 +14,7 @@
       </v-col>
 
       <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
+        <h1 class="display-2 font-weight-bold mb-3 mt-3">
           {{user.name}} @{{user.login}}
         </h1>
         <h1 class="display-2 font-weight-bold mb-3">
@@ -23,7 +23,7 @@
           </v-btn>
         </h1>
 
-        <p class="subheading font-weight-regular">
+        <p class="subheading font-weight-regular mt-5">
           {{user.bio}}
         </p>
       </v-col>
@@ -38,7 +38,7 @@
         user: [],
         icons: [
           { icon: 'mdi-spotify', color: 'green', link: 'https://open.spotify.com/user/crisu1710'},
-          { icon: 'mdi-gog', color: 'purple', link: 'https://www.gog.com/u/Crisu1710'},
+          //{ icon: 'mdi-gog', color: 'purple', link: 'https://www.gog.com/u/Crisu1710'},
           { icon: 'mdi-steam', color: 'indigo darken-4', link: 'https://www.instagram.com/robins1710'},
           { icon: 'mdi-github', color: '', link: 'https://github.com/Crisu1710'},
           { icon: 'mdi-twitter', color: 'blue', link: 'https://twitter.com/Crisu1710'},
@@ -47,18 +47,9 @@
         ],
       }
     },
-    methods: {
-    },
-    computed: {
-      filtertrepos: function () {
-        return this.repos.filter(function (repro) {
-          return repro.fork === false
-        })
-      }
-    },
     created() {
       this.$http.get('https://api.github.com/users/Crisu1710').then(function(data){
-        console.log(data);
+        //console.log(data);
         this.user = data.body //get request data and send it do return items
     });
   },
