@@ -147,6 +147,8 @@ var _default = (0, _mixins.default)(_VSheet.default, _colorable.default, _toggle
       }, [(0, _helpers.getSlot)(this)]);
     },
     genWrapper: function genWrapper() {
+      var _this = this;
+
       var setColor = this.hasBackground ? this.setBackgroundColor : this.setTextColor;
       var data = setColor(this.color, {
         staticClass: 'v-snack__wrapper',
@@ -154,7 +156,13 @@ var _default = (0, _mixins.default)(_VSheet.default, _colorable.default, _toggle
         directives: [{
           name: 'show',
           value: this.isActive
-        }]
+        }],
+        on: {
+          mouseenter: function mouseenter() {
+            return window.clearTimeout(_this.activeTimeout);
+          },
+          mouseleave: this.setTimeout
+        }
       });
       return this.$createElement('div', data, [this.genContent(), this.genActions()]);
     },
@@ -166,7 +174,7 @@ var _default = (0, _mixins.default)(_VSheet.default, _colorable.default, _toggle
       }, [this.genWrapper()]);
     },
     setTimeout: function setTimeout() {
-      var _this = this;
+      var _this2 = this;
 
       window.clearTimeout(this.activeTimeout);
       var timeout = Number(this.timeout);
@@ -177,7 +185,7 @@ var _default = (0, _mixins.default)(_VSheet.default, _colorable.default, _toggle
       }
 
       this.activeTimeout = window.setTimeout(function () {
-        _this.isActive = false;
+        _this2.isActive = false;
       }, timeout);
     }
   },

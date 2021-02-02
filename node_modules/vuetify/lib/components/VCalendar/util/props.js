@@ -121,6 +121,9 @@ export default {
       type: [Array, String],
       default: ''
     },
+    categoryText: {
+      type: [String, Function]
+    },
     categoryHideDynamic: {
       type: Boolean
     },

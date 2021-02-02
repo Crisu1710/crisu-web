@@ -6,7 +6,7 @@
         <v-card class="mt-3 mx-2" outlined height="100%">
             <v-list-item>
               <v-list-item-content>
-                <v-card-title class="justify-center text-uppercase blue--text">{{device.name}}</v-card-title>
+                <v-card-title class="justify-center text-uppercase blue--text"><v-icon size="24px">{{device.icon}}</v-icon>{{device.name}}<v-icon size="24px">{{device.icon}}</v-icon></v-card-title>
                 <v-card-text>
                   <b v-if="device.os" class="text-wrap"><v-icon size="24px">mdi-disc</v-icon> {{device.os}}</b><br>
                   <b v-if="device.cpu" class="text-wrap"><v-icon size="24px">mdi-cpu-64-bit</v-icon> {{device.cpu}}</b><br>
@@ -29,10 +29,11 @@
     data() {
       return {
         devices: [
-          {os: 'Win 10', name: 'Gaming-System', cpu: 'AMD Ryzen 7 2700X', gpu: 'Nvidia RTX 2070', ram: '2x 8GB DDR4-3200',mb: 'Gigabyte X470 Aorus Ultra Gaming', psu: '500 Watt be quiet! Pure Power 10 ', disk: '1x 1TB NVMe M.2, 1x 500GB NVMe M.2, 1 x ,1 x'},
-          {os: 'Manjaro Linux', name: 'ThinkPad T470', cpu: 'Intel Core i5-7200U', gpu: 'CPU', ram: '8 GB',mb: 'default', psu: 'default', disk: '500GB M.2'},
-          {os: 'Manjaro Linux', name: 'ThinkPad W500', cpu: 'Intel', gpu: 'Nvidia', ram: '16GB',mb: 'default', psu: 'default', disk: '500GB SSD'},
-          {os: 'XCP-ng, CentOS', name: '"Server"', cpu: 'AMD Ryzen 5 2600', gpu: 'Nvidia GeForce 8400 GS', ram: '2x 8GB DDR4-3200',mb: 'Gigabyte B450 Aorus m', psu: '630 Watt be quiet! Pure Power', disk: '2x 4TB WD-RED'}
+          {icon: 'mdi-microsoft-windows', os: 'Win 10', name: 'Gaming-System', cpu: 'AMD Ryzen 7 2700X', gpu: 'Nvidia RTX 2070', ram: '2x 8 GB DDR4-3200',mb: 'Gigabyte X470 Aorus Ultra Gaming', psu: '500 Watt be quiet! Pure Power 10 ', disk: '1x 1 TB NVMe M.2, 1x 500 GB NVMe M.2'},
+          {icon: 'mdi-laptop', os: 'Manjaro Linux (KDE)', name: 'ThinkPad T570', cpu: 'Intel Core i5-7200U', gpu: 'CPU', ram: '16 GB',mb: 'default', psu: 'default', disk: '500 GB M.2'},
+          {icon: 'mdi-laptop', os: 'Manjaro Linux', name: 'ThinkPad W500', cpu: 'Intel', gpu: 'Nvidia', ram: '16 GB',mb: 'default', psu: 'default', disk: '500 GB SSD'},
+          {icon: 'mdi-server', os: 'CentOS 8', name: 'k3s Server', cpu: 'AMD Ryzen 5 2600', gpu: 'Nvidia GeForce GT 710', ram: '4x 8 GB DDR4-3200',mb: 'Gigabyte B450 Aorus m', psu: '630 Watt be quiet! Pure Power', disk: '2x 4 TB WD-RED'},
+          {icon: 'mdi-wall', os: 'OPNsense 21', name: 'Firewall', cpu: 'Intel® Core™ i5-5257U', gpu: 'Intel® Iris® Graphics 6100', ram: '1x 8 GB DDR3',mb: 'Minisforum U700', psu: 'default', disk: '128 GB M.2'}
         ],
       }
     },

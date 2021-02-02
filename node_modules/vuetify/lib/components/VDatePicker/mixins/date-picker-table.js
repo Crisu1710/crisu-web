@@ -94,7 +94,7 @@ export default mixins(Colorable, Localable, Themeable
       }, createItemTypeNativeListeners(this, `:${mouseEventType}`, value));
     },
 
-    genButton(value, isFloating, mouseEventType, formatter) {
+    genButton(value, isFloating, mouseEventType, formatter, isOtherMonth = false) {
       const isAllowed = isDateAllowed(value, this.min, this.max, this.allowedDates);
       const isSelected = this.isSelected(value) && isAllowed;
       const isCurrent = value === this.current;
@@ -102,12 +102,12 @@ export default mixins(Colorable, Localable, Themeable
       const color = (isSelected || isCurrent) && (this.color || 'accent');
       return this.$createElement('button', setColor(color, {
         staticClass: 'v-btn',
-        class: this.genButtonClasses(isAllowed, isFloating, isSelected, isCurrent),
+        class: this.genButtonClasses(isAllowed && !isOtherMonth, isFloating, isSelected, isCurrent),
         attrs: {
           type: 'button'
         },
         domProps: {
-          disabled: this.disabled || !isAllowed
+          disabled: this.disabled || !isAllowed || isOtherMonth
         },
         on: this.genButtonEvents(value, isAllowed, mouseEventType)
       }), [this.$createElement('div', {

@@ -27,6 +27,7 @@ export default mixins(Elevatable, Themeable).extend({
     },
     flat: Boolean,
     hideCanvas: Boolean,
+    hideSliders: Boolean,
     hideInputs: Boolean,
     hideModeSwitch: Boolean,
     mode: {
@@ -101,7 +102,7 @@ export default mixins(Elevatable, Themeable).extend({
     genControls() {
       return this.$createElement('div', {
         staticClass: 'v-color-picker__controls'
-      }, [this.genPreview(), !this.hideInputs && this.genEdit()]);
+      }, [!this.hideSliders && this.genPreview(), !this.hideInputs && this.genEdit()]);
     },
 
     genEdit() {
@@ -161,7 +162,7 @@ export default mixins(Elevatable, Themeable).extend({
       props: {
         maxWidth: this.width
       }
-    }, [!this.hideCanvas && this.genCanvas(), this.genControls(), this.showSwatches && this.genSwatches()]);
+    }, [!this.hideCanvas && this.genCanvas(), (!this.hideSliders || !this.hideInputs) && this.genControls(), this.showSwatches && this.genSwatches()]);
   }
 
 });

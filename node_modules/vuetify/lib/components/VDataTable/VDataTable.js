@@ -202,8 +202,8 @@ export default mixins(VDataIterator, Loadable).extend({
       return this.customSort(items, sortBy, sortDesc, locale, this.columnSorters);
     },
 
-    createItemProps(item) {
-      const props = VDataIterator.options.methods.createItemProps.call(this, item);
+    createItemProps(item, index) {
+      const props = VDataIterator.options.methods.createItemProps.call(this, item, index);
       return Object.assign(props, {
         headers: this.computedHeaders
       });
@@ -253,7 +253,9 @@ export default mixins(VDataIterator, Loadable).extend({
           'toggle-select-all': this.toggleSelectAll
         }
       };
-      const children = [getSlot(this, 'header', data)];
+      const children = [getSlot(this, 'header', { ...data,
+        isMobile: this.isMobile
+      })];
 
       if (!this.hideDefaultHeader) {
         const scopedSlots = getPrefixedScopedSlots('header.', this.$scopedSlots);
@@ -288,6 +290,7 @@ export default mixins(VDataIterator, Loadable).extend({
           return this.$scopedSlots.group({
             group: group.name,
             options: props.options,
+            isMobile: this.isMobile,
             items: group.items,
             headers: this.computedHeaders
           });
@@ -316,6 +319,7 @@ export default mixins(VDataIterator, Loadable).extend({
         }, [this.$scopedSlots['group.header']({
           group,
           groupBy: props.options.groupBy,
+          isMobile: this.isMobile,
           items,
           headers: this.computedHeaders,
           isOpen,
@@ -358,6 +362,7 @@ export default mixins(VDataIterator, Loadable).extend({
         }, [this.$scopedSlots['group.summary']({
           group,
           groupBy: props.options.groupBy,
+          isMobile: this.isMobile,
           items,
           headers: this.computedHeaders,
           isOpen,
@@ -382,14 +387,16 @@ export default mixins(VDataIterator, Loadable).extend({
 
       for (let i = 0; i < items.length; i++) {
         const item = items[i];
-        rows.push(this.$scopedSlots.item({ ...this.createItemProps(item),
-          index: i
+        rows.push(this.$scopedSlots.item({ ...this.createItemProps(item, i),
+          isMobile: this.isMobile
         }));
 
         if (this.isExpanded(item)) {
           rows.push(this.$scopedSlots['expanded-item']({
-            item,
-            headers: this.computedHeaders
+            headers: this.computedHeaders,
+            isMobile: this.isMobile,
+            index: i,
+            item
           }));
         }
       }
@@ -398,20 +405,21 @@ export default mixins(VDataIterator, Loadable).extend({
     },
 
     genDefaultRows(items, props) {
-      return this.$scopedSlots['expanded-item'] ? items.map(item => this.genDefaultExpandedRow(item)) : items.map(item => this.genDefaultSimpleRow(item));
+      return this.$scopedSlots['expanded-item'] ? items.map((item, index) => this.genDefaultExpandedRow(item, index)) : items.map((item, index) => this.genDefaultSimpleRow(item, index));
     },
 
-    genDefaultExpandedRow(item) {
+    genDefaultExpandedRow(item, index) {
       const isExpanded = this.isExpanded(item);
       const classes = {
         'v-data-table__expanded v-data-table__expanded__row': isExpanded
       };
-      const headerRow = this.genDefaultSimpleRow(item, classes);
+      const headerRow = this.genDefaultSimpleRow(item, index, classes);
       const expandedRow = this.$createElement('tr', {
         staticClass: 'v-data-table__expanded v-data-table__expanded__content'
       }, [this.$scopedSlots['expanded-item']({
-        item,
-        headers: this.computedHeaders
+        headers: this.computedHeaders,
+        isMobile: this.isMobile,
+        item
       })]);
       return this.$createElement(RowGroup, {
         props: {
@@ -424,13 +432,15 @@ export default mixins(VDataIterator, Loadable).extend({
       }, [expandedRow])]);
     },
 
-    genDefaultSimpleRow(item, classes = {}) {
+    genDefaultSimpleRow(item, index, classes = {}) {
       const scopedSlots = getPrefixedScopedSlots('item.', this.$scopedSlots);
-      const data = this.createItemProps(item);
+      const data = this.createItemProps(item, index);
 
       if (this.showSelect) {
         const slot = scopedSlots['data-table-select'];
-        scopedSlots['data-table-select'] = slot ? () => slot(data) : () => this.$createElement(VSimpleCheckbox, {
+        scopedSlots['data-table-select'] = slot ? () => slot({ ...data,
+          isMobile: this.isMobile
+        }) : () => this.$createElement(VSimpleCheckbox, {
           staticClass: 'v-data-table__checkbox',
           props: {
             value: data.isSelected,
@@ -466,6 +476,7 @@ export default mixins(VDataIterator, Loadable).extend({
         props: {
           headers: this.computedHeaders,
           hideDefaultHeader: this.hideDefaultHeader,
+          index,
           item,
           rtl: this.$vuetify.rtl
         },
@@ -547,7 +558,9 @@ export default mixins(VDataIterator, Loadable).extend({
 
       return this.$createElement(VSimpleTable, {
         props: simpleProps
-      }, [this.proxySlot('top', getSlot(this, 'top', props, true)), this.genCaption(props), this.genColgroup(props), this.genHeaders(props), this.genBody(props), this.proxySlot('bottom', this.genFooters(props))]);
+      }, [this.proxySlot('top', getSlot(this, 'top', { ...props,
+        isMobile: this.isMobile
+      }, true)), this.genCaption(props), this.genColgroup(props), this.genHeaders(props), this.genBody(props), this.proxySlot('bottom', this.genFooters(props))]);
     },
 
     proxySlot(slot, content) {

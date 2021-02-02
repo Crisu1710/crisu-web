@@ -218,7 +218,7 @@ var _default2 = baseMixins.extend({
     /** @public */
     reset: function reset() {
       this.isResetting = true;
-      this.internalValue = Array.isArray(this.internalValue) ? [] : undefined;
+      this.internalValue = Array.isArray(this.internalValue) ? [] : null;
     },
 
     /** @public */

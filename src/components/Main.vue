@@ -39,7 +39,7 @@
         icons: [
           { icon: 'mdi-spotify', color: 'green', link: 'https://open.spotify.com/user/crisu1710'},
           //{ icon: 'mdi-gog', color: 'purple', link: 'https://www.gog.com/u/Crisu1710'},
-          { icon: 'mdi-steam', color: 'indigo darken-4', link: 'https://steamcommunity.com/id/crisu1710'},
+          //{ icon: 'mdi-steam', color: 'indigo darken-4', link: 'https://steamcommunity.com/id/crisu1710'},
           { icon: 'mdi-github', color: '', link: 'https://github.com/Crisu1710'},
           { icon: 'mdi-xing', color: 'teal darken-3', link: 'https://www.xing.com/profile/Robin_Schneider99/cv'},
         ],

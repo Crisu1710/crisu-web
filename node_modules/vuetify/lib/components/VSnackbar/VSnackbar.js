@@ -146,7 +146,11 @@ export default mixins(VSheet, Colorable, Toggleable, PositionableFactory(['absol
         directives: [{
           name: 'show',
           value: this.isActive
-        }]
+        }],
+        on: {
+          mouseenter: () => window.clearTimeout(this.activeTimeout),
+          mouseleave: this.setTimeout
+        }
       });
       return this.$createElement('div', data, [this.genContent(), this.genActions()]);
     },

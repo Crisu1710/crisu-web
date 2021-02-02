@@ -51,6 +51,7 @@ var _default = (0, _mixins.default)(_elevatable.default, _themeable.default).ext
     },
     flat: Boolean,
     hideCanvas: Boolean,
+    hideSliders: Boolean,
     hideInputs: Boolean,
     hideModeSwitch: Boolean,
     mode: {
@@ -125,7 +126,7 @@ var _default = (0, _mixins.default)(_elevatable.default, _themeable.default).ext
     genControls: function genControls() {
       return this.$createElement('div', {
         staticClass: 'v-color-picker__controls'
-      }, [this.genPreview(), !this.hideInputs && this.genEdit()]);
+      }, [!this.hideSliders && this.genPreview(), !this.hideInputs && this.genEdit()]);
     },
     genEdit: function genEdit() {
       var _this = this;
@@ -182,7 +183,7 @@ var _default = (0, _mixins.default)(_elevatable.default, _themeable.default).ext
       props: {
         maxWidth: this.width
       }
-    }, [!this.hideCanvas && this.genCanvas(), this.genControls(), this.showSwatches && this.genSwatches()]);
+    }, [!this.hideCanvas && this.genCanvas(), (!this.hideSliders || !this.hideInputs) && this.genControls(), this.showSwatches && this.genSwatches()]);
   }
 });
 

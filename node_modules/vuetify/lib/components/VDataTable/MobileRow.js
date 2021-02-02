@@ -6,6 +6,7 @@ export default Vue.extend({
   props: {
     headers: Array,
     hideDefaultHeader: Boolean,
+    index: Number,
     item: Object,
     rtl: Boolean
   },
@@ -29,7 +30,9 @@ export default Vue.extend({
       if (scopedSlot) {
         children.push(scopedSlot({
           item: props.item,
+          isMobile: true,
           header,
+          index: props.index,
           value
         }));
       } else if (regularSlot) {

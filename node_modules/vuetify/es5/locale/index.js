@@ -15,10 +15,22 @@ Object.defineProperty(exports, "ar", {
     return _ar.default;
   }
 });
+Object.defineProperty(exports, "bg", {
+  enumerable: true,
+  get: function get() {
+    return _bg.default;
+  }
+});
 Object.defineProperty(exports, "ca", {
   enumerable: true,
   get: function get() {
     return _ca.default;
+  }
+});
+Object.defineProperty(exports, "ckb", {
+  enumerable: true,
+  get: function get() {
+    return _ckb.default;
   }
 });
 Object.defineProperty(exports, "cs", {
@@ -201,6 +213,12 @@ Object.defineProperty(exports, "tr", {
     return _tr.default;
   }
 });
+Object.defineProperty(exports, "az", {
+  enumerable: true,
+  get: function get() {
+    return _az.default;
+  }
+});
 Object.defineProperty(exports, "uk", {
   enumerable: true,
   get: function get() {
@@ -224,7 +242,11 @@ var _af = _interopRequireDefault(require("./af"));
 
 var _ar = _interopRequireDefault(require("./ar"));
 
+var _bg = _interopRequireDefault(require("./bg"));
+
 var _ca = _interopRequireDefault(require("./ca"));
+
+var _ckb = _interopRequireDefault(require("./ckb"));
 
 var _cs = _interopRequireDefault(require("./cs"));
 
@@ -285,6 +307,8 @@ var _sv = _interopRequireDefault(require("./sv"));
 var _th = _interopRequireDefault(require("./th"));
 
 var _tr = _interopRequireDefault(require("./tr"));
+
+var _az = _interopRequireDefault(require("./az"));
 
 var _uk = _interopRequireDefault(require("./uk"));
 

@@ -136,6 +136,9 @@ var _default2 = {
       type: [Array, String],
       default: ''
     },
+    categoryText: {
+      type: [String, Function]
+    },
     categoryHideDynamic: {
       type: Boolean
     },

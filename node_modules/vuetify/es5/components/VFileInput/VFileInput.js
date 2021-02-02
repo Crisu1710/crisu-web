@@ -171,7 +171,7 @@ var _default = _VTextField.default.extend({
   },
   methods: {
     clearableCallback: function clearableCallback() {
-      this.internalValue = this.isMultiple ? [] : undefined;
+      this.internalValue = this.isMultiple ? [] : null;
       this.$refs.input.value = '';
     },
     genChips: function genChips() {

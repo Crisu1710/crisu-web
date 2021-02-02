@@ -224,7 +224,7 @@ export default baseMixins.extend({
     /** @public */
     reset() {
       this.isResetting = true;
-      this.internalValue = Array.isArray(this.internalValue) ? [] : undefined;
+      this.internalValue = Array.isArray(this.internalValue) ? [] : null;
     },
 
     /** @public */

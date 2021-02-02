@@ -152,6 +152,15 @@ var _default2 = (0, _mixins.default)(_VResponsive.default, _themeable.default).e
       this.getSrc();
       this.isLoading = false;
       this.$emit('load', this.src);
+
+      if (this.image && (this.normalisedSrc.src.endsWith('.svg') || this.normalisedSrc.src.startsWith('data:image/svg+xml'))) {
+        if (this.image.naturalHeight && this.image.naturalWidth) {
+          this.naturalWidth = this.image.naturalWidth;
+          this.calculatedAspectRatio = this.image.naturalWidth / this.image.naturalHeight;
+        } else {
+          this.calculatedAspectRatio = 1;
+        }
+      }
     },
     onError: function onError() {
       this.hasError = true;
@@ -198,8 +207,8 @@ var _default2 = (0, _mixins.default)(_VResponsive.default, _themeable.default).e
         if (naturalHeight || naturalWidth) {
           _this2.naturalWidth = naturalWidth;
           _this2.calculatedAspectRatio = naturalWidth / naturalHeight;
-        } else {
-          timeout != null && !_this2.hasError && setTimeout(poll, timeout);
+        } else if (!img.complete && _this2.isLoading && !_this2.hasError && timeout != null) {
+          setTimeout(poll, timeout);
         }
       };
 
