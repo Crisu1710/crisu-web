@@ -2,7 +2,6 @@
   <v-container>
     <v-row class="text-center mt-5">
       <v-col cols="12">
-
         <v-avatar size="200">
           <v-img
             :src="user.avatar_url"
@@ -12,9 +11,8 @@
           />
         </v-avatar>
       </v-col>
-
       <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3 mt-3">
+        <h1 class="mb-3 mt-3">
           {{user.name}} @{{user.login}}
         </h1>
         <h1 class="display-2 font-weight-bold mb-3">
@@ -22,10 +20,9 @@
             <v-icon size="24px" :color="icon.color">{{ icon.icon }}</v-icon>
           </v-btn>
         </h1>
-
-        <p class="subheading font-weight-regular mt-5">
+        <h3 class="subheading font-weight-regular mt-5">
           {{user.bio}}
-        </p>
+        </h3>
       </v-col>
     </v-row>
   </v-container>

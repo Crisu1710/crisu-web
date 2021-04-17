@@ -7,6 +7,7 @@ import VueResource from 'vue-resource'
 import Clipboard from 'v-clipboard'
 //css
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import  './App.css'
 //filter
 import DateFilter from './filters/date.js'
 

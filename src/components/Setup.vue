@@ -34,6 +34,7 @@
           {icon: 'mdi-laptop', os: 'Manjaro Linux', name: 'ThinkPad W500', cpu: 'Intel', gpu: 'Nvidia', ram: '16 GB',mb: 'default', psu: 'default', disk: '500 GB SSD'},
           {icon: 'mdi-server', os: 'CentOS 8', name: 'k3s Server', cpu: 'AMD Ryzen 5 2600', gpu: 'Nvidia GeForce GT 710', ram: '4x 8 GB DDR4-3200',mb: 'Gigabyte B450 Aorus m', psu: '630 Watt be quiet! Pure Power', disk: '2x 4 TB WD-RED'},
           {icon: 'mdi-wall', os: 'OPNsense 21', name: 'Firewall', cpu: 'Intel® Core™ i5-5257U', gpu: 'Intel® Iris® Graphics 6100', ram: '1x 8 GB DDR3',mb: 'Minisforum U700', psu: 'default', disk: '128 GB M.2'}
+          // {icon: 'mdi-access-point', os: 'OpenWrt', name: 'Accesspoint', mb: 'Mi Router 4A Gigabit Edition'}
         ],
       }
     },
